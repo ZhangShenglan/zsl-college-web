@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.springsource.org.aopalliance:apoalliance:20160310">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/springsource/org/aopalliance/apoalliance/20160310/apoalliance-20160310.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/springsource/org/aopalliance/apoalliance/20160310/apoalliance-20160310-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/springsource/org/aopalliance/apoalliance/20160310/apoalliance-20160310-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zsl.college.web.dbproxy.dao.UserDao">
+    <resultMap type="UserBean" id="UserResult">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="userName" column="userName"/>
+        <result property="password" column="password"/>
+        <result property="schoolId" column="school_Id"/>
+        <result property="gender" column="gender"/>
+        <result property="introduce" column="introduce"/>
+        <result property="createTime" column="create_time"/>
+        <result property="avatar" column="avatar"/>
+    </resultMap>
+
+    <select id="getUserList" parameterType="java.util.Map" resultMap="UserResult">
+        SELECT * FROM tb_user
+        <where>
+            <if test="name!=null and name != ''">
+                and name = #{name}
+            </if>
+        </where>
+        ${sort}
+        <if test="start!=null and pageSize!=null">
+            limit #{start},#{pageSize}
+        </if>
+    </select>
+</mapper>
