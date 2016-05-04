@@ -12,6 +12,7 @@
         <result property="introduce" column="introduce"/>
         <result property="createTime" column="create_time"/>
         <result property="avatar" column="avatar"/>
+        <result property="phone" column="phone"/>
     </resultMap>
 
     <select id="getUserList" parameterType="java.util.Map" resultMap="UserResult">
@@ -26,4 +27,20 @@
             limit #{start},#{pageSize}
         </if>
     </select>
+
+    <select id="getUserById" parameterType="java.lang.Long" resultMap="UserResult">
+        SELECT * FROM tb_user
+        WHERE id = #{userId}
+    </select>
+
+    <select id="getUserByUsername" parameterType="java.lang.String" resultMap="UserResult">
+        SELECT * FROM tb_user
+        WHERE userName = #{userName}
+    </select>
+
+    <insert id="createUser" useGeneratedKeys="true" keyProperty="id" parameterType="UserBean">
+        insert into tb_user(name, school_Id, gender, introduce, create_time, userName, password,avatar,phone)
+        values(#{name}, #{schoolId}, #{gender}, #{introduce}, #{createTime}, #{userName}, #{password}, #{avatar},#{phone})
+    </insert>
+
 </mapper>

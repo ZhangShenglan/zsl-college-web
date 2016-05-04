@@ -15,4 +15,25 @@ public interface UserService {
      * @return
      */
     List<UserBean> getUserList(Map<String, Object> map);
+
+    /**
+     * 根据id获取用户信息
+     * @param userId    用户ID
+     * @return
+     */
+    UserBean getUserById(Long userId);
+
+    /**
+     * 根据username获取用户信息
+     * @param userName
+     * @return
+     */
+    UserBean getUserByUsername(String userName);
+
+    /**
+     * 创建新用户
+     * @param userBean
+     * @return
+     */
+    int createUser(UserBean userBean);
 }

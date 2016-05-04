@@ -22,4 +22,19 @@ public class UserServiceImpl implements UserService{
     public List<UserBean> getUserList(Map<String, Object> map){
         return userDao.getUserList(map);
     }
+
+    @Override
+    public UserBean getUserById(Long userId){
+        return userDao.getUserById(userId);
+    }
+
+    @Override
+    public UserBean getUserByUsername(String userName){
+        return userDao.getUserByUsername(userName);
+    }
+
+    @Override
+    public int createUser(UserBean userBean){
+        return userDao.createUser(userBean);
+    }
 }

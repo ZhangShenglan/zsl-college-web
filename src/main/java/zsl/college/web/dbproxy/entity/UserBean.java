@@ -15,6 +15,7 @@ public class UserBean implements Serializable {
     private String introduce;
     private String createTime;
     private String avatar;
+    private String phone;
 
     public Long getId() {
         return id;
@@ -86,5 +87,13 @@ public class UserBean implements Serializable {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

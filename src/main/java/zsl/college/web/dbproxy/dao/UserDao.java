@@ -18,4 +18,26 @@ public interface UserDao {
      * @return
      */
     List<UserBean> getUserList(Map<String, Object> map);
-}
+
+    /**
+     * 根据id获取用户信息
+     * @param userId
+     * @return
+     */
+    UserBean getUserById(Long userId);
+
+    /**
+     * 根据用户名获取用户信息
+     * @param userName      用户名
+     * @return
+     */
+    UserBean getUserByUsername(String userName);
+
+    /**
+     * 创建新用户
+     * @param userBean
+     * @return
+     */
+    int createUser(UserBean userBean);
+
+    }
