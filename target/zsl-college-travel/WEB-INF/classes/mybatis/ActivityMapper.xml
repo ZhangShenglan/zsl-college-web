@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zsl.college.web.dbproxy.dao.ActivityDao">
+    <resultMap type="Activity" id="ActivityResult">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="beginTime" column="begin_time"/>
+        <result property="beginPlace" column="begin_place"/>
+        <result property="endPlace" column="end_place"/>
+        <result property="captainId" column="captainId"/>
+        <result property="totalNum" column="total_num"/>
+        <result property="applied" column="applied"/>
+        <result property="liked" column="liked"/>
+        <result property="activityType" column="activity_type"/>
+        <result property="introduce" column="introduce"/>
+        <result property="images" column="images"/>
+        <result property="creatorId" column="creator_Id"/>
+        <result property="origin" column="origin"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <select id="getActivityList" parameterType="java.util.Map" resultMap="ActivityResult">
+        SELECT * FROM tb_activity
+        <where>
+            <if test="name!=null and name != ''">
+                and name = #{name}
+            </if>
+        </where>
+        ${sort}
+        <if test="start!=null and pageSize!=null">
+            limit #{start},#{pageSize}
+        </if>
+    </select>
+
+
+    <select id="getActivityById" parameterType="java.lang.Long" resultMap="ActivityResult">
+        SELECT * FROM tb_activity where id=#{activityId}
+    </select>
+
+    <select id="getActivityByKeyword" parameterType="java.lang.String" resultMap="ActivityResult">
+        SELECT * FROM tb_activity where title like CONCAT('%',#{keyword},'%') or end_place like CONCAT('%',#{keyword},'%')
+    </select>
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id" parameterType="Activity">
+        insert into tb_activity(title, begin_time, begin_place, end_place, images,captainId, total_num, applied,liked,activity_type,introduce,creator_Id,origin)
+        values(#{title}, #{beginTime}, #{beginPlace}, #{endPlace}, #{images}, #{captainId}, #{totalNum}, #{applied},#{liked},#{activityType},#{introduce},#{creatorId},#{origin})
+    </insert>
+
+    </mapper>
