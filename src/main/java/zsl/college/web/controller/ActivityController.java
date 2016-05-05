@@ -9,11 +9,13 @@ import zsl.college.web.common.Constants;
 import zsl.college.web.dbproxy.entity.Activity;
 import zsl.college.web.dbproxy.entity.PageBean;
 import zsl.college.web.service.ActivityService;
+import zsl.college.web.util.DateUtil;
 import zsl.college.web.util.ResponseUtil;
 import zsl.college.web.util.StringUtil;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,6 +55,13 @@ public class ActivityController {
             result.put("message","没有对应结果");
             ResponseUtil.write(response, result);
             return null;
+        }
+        for(Activity activity : activities){
+            Date beginDate = DateUtil.formatString(activity.getBeginTime(),"yyyy-MM-dd");
+            Date endDate = DateUtil.formatString(activity.getEndTime(),"yyyy-MM-dd");
+            if(beginDate != null && endDate != null){
+                activity.setDays((endDate.getTime() - beginDate.getTime())/(24*60*60*1000));
+            }
         }
         JSONArray jsonArray = JSONArray.fromObject(activities);
         result.put("rows", jsonArray);

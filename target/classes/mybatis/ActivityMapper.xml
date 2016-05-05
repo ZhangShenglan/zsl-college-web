@@ -19,6 +19,8 @@
         <result property="origin" column="origin"/>
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
+        <result property="endTime" column="end_time"/>
+        <result property="viewCount" column="viewCount"/>
     </resultMap>
 
     <select id="getActivityList" parameterType="java.util.Map" resultMap="ActivityResult">
@@ -29,8 +31,8 @@
             </if>
         </where>
         ${sort}
-        <if test="start!=null and pageSize!=null">
-            limit #{start},#{pageSize}
+        <if test="start!=null and size!=null">
+            limit #{start},#{size}
         </if>
     </select>
 

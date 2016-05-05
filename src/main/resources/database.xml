@@ -13,26 +13,12 @@
         http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.1.xsd
         ">
     <!-- 配置数据源 -->
-    <!--	<bean id="dataSource"
-            class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-            <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-            <property name="url" value="jdbc:mysql://rds2b1ia83kax8l48qp9.mysql.rds.aliyuncs.com:3306/whg_db_cloudbook" />
-            <property name="username" value="cloudbookrds1" />
-            <property name="password" value="Cloudbook_rdS160209" />
-        </bean>-->
-    <!--<bean id="dataSource"-->
-    <!--class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
-    <!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
-    <!--<property name="url" value="jdbc:mysql://120.26.94.240:3306/cloudbook-erp?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true" />-->
-    <!--<property name="username" value="root" />-->
-    <!--<property name="password" value="cloudbook@123" />-->
-    <!--</bean>-->
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://127.0.0.1:3306/collegeTravel?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true" />
         <property name="username" value="root" />
-        <property name="password" value="fuck" />
+        <property name="password" value="lmxlmx" />
     </bean>
 
 </beans>

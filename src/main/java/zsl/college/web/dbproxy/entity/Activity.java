@@ -9,6 +9,7 @@ public class Activity implements Serializable {
     private Long id;
     private String title;
     private String beginTime;
+    private String endTime;
     private String beginPlace;
     private String endPlace;
     private Long captainId;
@@ -22,6 +23,8 @@ public class Activity implements Serializable {
     private Integer origin;         //活动来源 0全部 1个人 2领队
     private String createTime;
     private String updateTime;
+    private Integer viewCount;      //浏览量
+    private long days;           //几日行
 
     public Long getId() {
         return id;
@@ -149,5 +152,29 @@ public class Activity implements Serializable {
 
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public Integer getViewCount() {
+        return viewCount;
+    }
+
+    public void setViewCount(Integer viewCount) {
+        this.viewCount = viewCount;
+    }
+
+    public long getDays() {
+        return days;
+    }
+
+    public void setDays(long days) {
+        this.days = days;
     }
 }
