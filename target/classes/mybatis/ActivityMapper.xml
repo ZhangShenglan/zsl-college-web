@@ -29,6 +29,9 @@
             <if test="name!=null and name != ''">
                 and name = #{name}
             </if>
+            <if test="activityType != null ">
+                and activity_type = #{activityType}
+            </if>
         </where>
         ${sort}
         <if test="start!=null and size!=null">
@@ -46,8 +49,8 @@
     </select>
 
     <insert id="create" useGeneratedKeys="true" keyProperty="id" parameterType="Activity">
-        insert into tb_activity(title, begin_time, begin_place, end_place, images,captainId, total_num, applied,liked,activity_type,introduce,creator_Id,origin)
-        values(#{title}, #{beginTime}, #{beginPlace}, #{endPlace}, #{images}, #{captainId}, #{totalNum}, #{applied},#{liked},#{activityType},#{introduce},#{creatorId},#{origin})
+        insert into tb_activity(title, begin_time, begin_place, end_place, images,captainId, total_num, applied,liked,activity_type,introduce,creator_Id,origin,create_time,captainId)
+        values(#{title}, #{beginTime}, #{beginPlace}, #{endPlace}, #{images}, #{captainId}, #{totalNum}, #{applied},#{liked},#{activityType},#{introduce},#{creatorId},#{origin},#{createTime},#{captainId})
     </insert>
 
     </mapper>

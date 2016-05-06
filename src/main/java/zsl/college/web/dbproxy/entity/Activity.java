@@ -25,6 +25,8 @@ public class Activity implements Serializable {
     private String updateTime;
     private Integer viewCount;      //浏览量
     private long days;           //几日行
+    private String time;
+    private String type;
 
     public Long getId() {
         return id;
@@ -176,5 +178,21 @@ public class Activity implements Serializable {
 
     public void setDays(long days) {
         this.days = days;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

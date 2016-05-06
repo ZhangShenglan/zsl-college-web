@@ -32,7 +32,7 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public Activity getActivityByKeyword(String  keyword){
+    public List<Activity> getActivityByKeyword(String  keyword){
         return activityDao.getActivityByKeyword(keyword);
     }
 

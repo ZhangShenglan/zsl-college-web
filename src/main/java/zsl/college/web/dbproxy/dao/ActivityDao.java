@@ -17,7 +17,7 @@ public interface ActivityDao {
 
     Activity getActivityById(Long activityId);
 
-    Activity getActivityByKeyword(String  keyword);
+    List<Activity> getActivityByKeyword(String  keyword);
 
     int create(Activity activity);
 }

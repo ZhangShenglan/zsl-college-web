@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import zsl.college.web.common.Constants;
+import zsl.college.web.dbproxy.entity.ActivityApply;
 import zsl.college.web.dbproxy.entity.PageBean;
 import zsl.college.web.dbproxy.entity.UserBean;
+import zsl.college.web.service.ActivityApplyService;
 import zsl.college.web.service.UserService;
 import zsl.college.web.util.DateUtil;
 import zsl.college.web.util.ResponseUtil;
@@ -29,6 +31,8 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    @Resource
+    private ActivityApplyService activityApplyService;
 
     @RequestMapping("/list")
     public String list(@RequestParam(value = "currPage", required = false) Integer currPage,
@@ -144,6 +148,41 @@ public class UserController {
         result.put("message","success");
         ResponseUtil.write(response, result);
         return null;
+    }
+
+    @RequestMapping("/apply")
+    public String applyActivity(@RequestParam(value = "activityId", required = true) Long activityId,
+                                @RequestParam(value = "userId", required = true) Long userId,
+                                HttpServletResponse response) throws Exception {
+        JSONObject result = new JSONObject();
+        if(activityId == null || activityId < 1){
+            result.put("statusCode", Constants.RESULT_CODE_ILLEGAL_REQUST);
+            result.put("message","活动id不能为空");
+            ResponseUtil.write(response, result);
+            return null;
+        }
+        if(userId == null || userId < 1){
+            result.put("statusCode", Constants.RESULT_CODE_ILLEGAL_REQUST);
+            result.put("message","用户id不能为空");
+            ResponseUtil.write(response, result);
+            return null;
+        }
+        ActivityApply activityApply = new ActivityApply();
+        activityApply.setActivityId(activityId);
+        activityApply.setUserId(userId);
+        activityApply.setCreateTime(DateUtil.getCurrentDate());
+        int flag = activityApplyService.create(activityApply);
+        if(flag < 1){
+            result.put("statusCode", Constants.RESULT_CODE_SERVER_ERROR);
+            result.put("message","活动报名失败");
+            ResponseUtil.write(response, result);
+            return null;
+        }
+        result.put("statusCode", Constants.RESULT_CODE_SUCCESS);
+        result.put("message","success");
+        ResponseUtil.write(response, result);
+        return null;
+
     }
 
 }

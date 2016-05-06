@@ -29,7 +29,7 @@ public interface ActivityService {
      * @param keyword
      * @return
      */
-    Activity getActivityByKeyword(String  keyword);
+    List<Activity> getActivityByKeyword(String  keyword);
 
     /**
      * 创建新活动
